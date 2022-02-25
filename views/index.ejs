@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--<title><%= title %></title>-->
+  <title>All projects | Hackaday.io</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <!--<h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>-->
+  <h1 style="text-align:center;">All Projects</h1>
+  <div id="projects">
+    <div id="pagination">
+      <div id="grid-container">
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="container">
+      
+      <script type="text/javascript">
+
+        document.getElementById('grid-container').innerHTML = `<%- grid %>`
+
+        for (let i = 0; i < `<%= totalPageNumber %>`; i++) {
+          var page = document.getElementById('pagination');
+          var button = document.createElement("BUTTON");
+          button.innerHTML = `<a href="/#${i + 1}">
+                                  <button onclick="btnHandler()"
+                                          id="btn" 
+                                          class="btn btn-primary"
+                                          value="${i + 1}">${i + 1}</button>
+                                </a>`;
+          page.appendChild(button);
+        }
+
+        function btnHandler() {
+          console.log("button clicked");
+          document.getElementById('grid-container').innerHTML = `<div class="grid-item">new item</div>
+                                                                  <div class="grid-item">new item</div>
+                                                                  <div class="grid-item">new item</div>`
+        }
+
+        document.getElementById('btn').onclick = function () {
+          var href = document.querySelector('a').getAttribute('href');
+          alert(href);
+        }
+      </script>
+    </div>
+  </div>
+</body>
+
+</html>
